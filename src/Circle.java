@@ -5,6 +5,10 @@ public class Circle {
 	int x = 250;
 	int y = 250;
 	
+	float r = 255;
+	float g = 255;
+	float b = 255;
+	
 	Circle(PApplet p) {
 		parent = p;
 	}
@@ -16,7 +20,7 @@ public class Circle {
 	
 	void show()
 	{
-		parent.fill(255);
+		parent.fill(r, g, b);
 		parent.ellipse(x, y, 50, 50);
 		if(parent.keyPressed == true) {
 			if(parent.key == 'a') {
@@ -30,6 +34,11 @@ public class Circle {
 			}
 			if(parent.key == 'w') {
 				y -= 5;
+			}
+			if(parent.key == 'r') {
+				r = parent.random(0, 255);
+				g = parent.random(0, 255);
+				b = parent.random(0, 255);
 			}
 		}
 	}
