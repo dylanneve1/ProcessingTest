@@ -9,37 +9,51 @@ public class Circle {
 	float g = 255;
 	float b = 255;
 	
+	double gravity = 0.4;
+	double yspeed = 3;
+	double xspeed = 3;
+	
 	Circle(PApplet p) {
 		parent = p;
 	}
 	
-	void caller()
+	public void caller()
 	{
 		show();
+		gravity();
+		collision();
+		move();
 	}
 	
-	void show()
+	private void move()
 	{
-		parent.fill(r, g, b);
+		x += xspeed;
+		y += yspeed;
+	}
+	
+	private void show()
+	{
 		parent.ellipse(x, y, 50, 50);
-		if(parent.keyPressed == true) {
-			if(parent.key == 'a') {
-				x -= 5;
-			}
-			if(parent.key == 'd') {
-				x += 5;
-			}
-			if(parent.key == 's') {
-				y += 5;
-			}
-			if(parent.key == 'w') {
-				y -= 5;
-			}
-			if(parent.key == 'r') {
-				r = parent.random(0, 255);
-				g = parent.random(0, 255);
-				b = parent.random(0, 255);
-			}
+	}
+	
+	private void gravity()
+	{
+		yspeed += gravity;
+	}
+	
+	private void collision()
+	{
+		if(x <= 0) {
+			xspeed *= -1;
+		}
+		if(x >= 500) {
+			xspeed *= -1;
+		}
+		if(y <= 0) {
+			yspeed *= -1;
+		}
+		if(y >= 500) {
+			yspeed *= -1;
 		}
 	}
 }
