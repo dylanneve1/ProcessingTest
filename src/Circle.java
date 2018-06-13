@@ -33,27 +33,43 @@ public class Circle {
 	
 	private void show()
 	{
+		parent.fill(r, g, b);
 		parent.ellipse(x, y, 50, 50);
 	}
 	
 	private void gravity()
 	{
 		yspeed += gravity;
+		if(yspeed >= 30) {
+			yspeed = 3;
+		}
 	}
 	
 	private void collision()
 	{
 		if(x <= 0) {
 			xspeed *= -1;
+			r = parent.random(0, 255);
+			g = parent.random(0, 255);
+			b = parent.random(0, 255);
 		}
 		if(x >= 500) {
 			xspeed *= -1;
+			r = parent.random(0, 255);
+			g = parent.random(0, 255);
+			b = parent.random(0, 255);
 		}
 		if(y <= 0) {
 			yspeed *= -1;
+			r = parent.random(0, 255);
+			g = parent.random(0, 255);
+			b = parent.random(0, 255);
 		}
 		if(y >= 500) {
 			yspeed *= -1;
+			r = parent.random(0, 255);
+			g = parent.random(0, 255);
+			b = parent.random(0, 255);
 		}
 	}
 }
